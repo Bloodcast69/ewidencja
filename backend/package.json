@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node --inspect=3000 -r ts-node/register ./src/app.ts",
     "start:watch": "nodemon",
-    "build": "tsc"
+    "build": "tsc src/app.ts src/queries.ts"
   },
   "author": "",
   "license": "ISC",
