@@ -1,0 +1,53 @@
+<h5 mat-dialog-title>{{data.mode === 'add' ? 'Dodaj użytkownika' : 'Modyfikuj użytkownika'}}</h5>
+
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field class="w-100" style="display: none;">
+      <input matInput formControlName="id" placeholder="ID">
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input matInput formControlName="firstname" placeholder="Imię">
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input matInput formControlName="lastname" placeholder="Nazwisko">
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <input matInput formControlName="email" placeholder="Email">
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Dział</mat-label>
+      <mat-select formControlName="department" [value]="this.department ? this.department.value : null">
+        <mat-option *ngFor="let department of departments" [value]="department.value">
+          {{department.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Stanowisko</mat-label>
+      <mat-select formControlName="position" [value]="this.position ? this.position.value : null">
+        <mat-option *ngFor="let position of positions" [value]="position.value">
+          {{position.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <mat-label>Typ</mat-label>
+      <mat-select formControlName="type" [value]="this.type ? this.type : null">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="submit()" [disabled]="form.invalid">{{data.mode === 'add' ? 'Dodaj' : 'Modyfikuj'}}</button>
+  <button mat-flat-button mat-dialog-close>Anuluj</button>
+</div>
